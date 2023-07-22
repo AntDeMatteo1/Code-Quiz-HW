@@ -1,48 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Coding Quiz</title>
 
-    <link rel="stylesheet" href="./assets/css/styles.css" />
-  </head>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/style.css" />
+    <title>Code Quiz Screen</title>
+</head>
 
-  <body>
-    <div class="scores"><a href="highscores.html">View Highscores</a></div>
+<body>
+    <header>
+        <a class="highscore-link" href="./highscore.html">View Highscores</a>
+        <p class="timer">Time: 0</p>
+    </header>
 
-    <div class="timer">Time: <span id="time">0</span></div>
-
-    <div class="wrapper">
-      <div id="start-screen" class="start">
+    <main class="main-screen">
         <h1>Coding Quiz Challenge</h1>
-        <p>
-          Try to answer the following code-related questions within the time
-          limit. Keep in mind that incorrect answers will penalize your
-          score/time by 15 seconds!
-        </p>
-        <button id="start">Start Quiz</button>
-      </div>
-
-      <div id="questions" class="hide">
-        <h2 id="question-title"></h2>
-        <div id="choices" class="choices"></div>
-      </div>
-
-      <div id="end-screen" class="hide">
-        <h2>All done!</h2>
-        <p>Your final score is <span id="final-score"></span>.</p>
-        <p>
-          Enter initials: <input type="text" id="initials" max="3" />
-          <button id="submit">Submit</button>
-        </p>
-      </div>
-
-      <div id="feedback" class="feedback hide"></div>
+        <p> Try to answer the following questions to the best of your ability in the time limit. Keep in mind that
+            incorrect
+            answers will penalize your score/time by 10 seconds! Good luck!</p>
+        <button class="start-quiz">Start Quiz</button>
+    </main>
+    <div class="container">
+        <div id="question-container" class='hide'>
+            <h2 id="question">Question</h2>
+            <div id="answer-buttons">
+                <button class="btn" id="option1">Answer 1</button>
+                <button class="btn" id="option2">Answer 2</button>
+                <button class="btn" id="option3">Answer 3</button>
+                <button class="btn" id="option4">Answer 4</button>
+            </div>
+            <p id="response"></p>
+        </div>
     </div>
 
-    <script src="./assets/js/questions.js"></script>
-    <script src="./assets/js/logic.js"></script>
-  </body>
+    <div class="game-over-screen hide">
+        <h3>Game Over! Well done!</h3>
+        <p>Final Score: <span id="final-score"></span></p>
+        <label for="initials">Enter Initials</label>
+        <input name="initials" id="initials" />
+        <button id="submit-button">Submit</button>
+    </div>
+
+    <script src="./assets/script.js"></script>
+</body>
+
 </html>
