@@ -1,29 +1,30 @@
-function printHighscores() {
-  // either get scores from localstorage or set to empty array
-  var highscores = JSON.parse(window.localStorage.getItem('highscores')) || [];
+// Global variables
+var highScoreListEl = document.querySelector("#high-scores-list");
+var clearButton = document.querySelector(".clear-highscores");
 
-  // sort highscores by score property in descending order
-  highscores.sort(function (a, b) {
-    return b.score - a.score;
-  });
+// Gets the highscores from the local storage and adds them to the screen
+function populateHighScoreList() {
+    var data = JSON.parse(localStorage.getItem("scoresArray"));
 
-  for (var i = 0; i < highscores.length; i += 1) {
-    // create li tag for each high score
-    var liTag = document.createElement('li');
-    liTag.textContent = highscores[i].initials + ' - ' + highscores[i].score;
-
-    // display on page
-    var olEl = document.getElementById('highscores');
-    olEl.appendChild(liTag);
-  }
+    if (data) {
+        data.sort(function (a, b) {
+            return b.highscore - a.highscore;
+        });
+        for (var i = 0; i < data.length; i++) {
+            var liEl = document.createElement("li");
+            liEl.textContent = "Inititals: " + data[i].initials + "     Score: " + data[i].highscore;
+            highScoreListEl.append(liEl);
+        }
+    }
 }
 
-function clearHighscores() {
-  window.localStorage.removeItem('highscores');
-  window.location.reload();
+populateHighScoreList();
+
+// Clears the scores from local storage and the high scores list on the screen
+function clearScores() {
+    localStorage.clear();
+    window.location.reload();
 }
 
-document.getElementById('clear').onclick = clearHighscores;
-
-// run function when page loads
-printHighscores();
+// Starts clearScores function when the Clear button is clicked
+clearButton.addEventListener("click", clearScores);
